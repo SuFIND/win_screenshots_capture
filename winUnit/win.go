@@ -66,10 +66,7 @@ func FindWindow(title string) (win.HWND, error) {
 		}
 		return 1 // continue enumeration
 	})
-	err := EnumWindows(cb, 0)
-	if err != nil {
-		return 0, err
-	}
+	_ = EnumWindows(cb, 0)
 	if hwnd == 0 {
 		return 0, fmt.Errorf("No window with title '%s' found", title)
 	}
